@@ -17,7 +17,11 @@ $(document).ready(function(){
       $(".page-div").hide();
 	  $("#containerdiv2").show();
   });
-  
+    $("#home").click(function(){
+      $(".page-div").hide();
+	  $("#resultDiv").hide();
+	  $("#containerdiv1").show();
+  });
   $("#submit").click(function(){
 		var hist = parseInt($('input[name="hist"]:checked').val());
 		var temp = parseInt($('input[name="temp"]:checked').val());
@@ -232,6 +236,7 @@ $(document).ready(function(){
 	<header id="resultDivHdr" class="w3-container w3-blue w3-display-middle">
 		<h1 id="resultDivTxt">Header</h1>
 	</header>
+	<div style="text-align:center">	<button id="home" class="w3-button w3-blue w3-border">HOME</button>	</div><br>
 	</div>
 </body>
 </html>
