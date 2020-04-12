@@ -17,10 +17,42 @@ $(document).ready(function(){
       $(".page-div").hide();
 	  $("#containerdiv2").show();
   });
-  $("#next1").click(function(){
-      $(".page-div").hide();
-	  $("#containerdiv3").show();
-  }); 
+  
+  $("#submit").click(function(){
+		var hist = parseInt($('input[name="hist"]:checked').val());
+		var temp = parseInt($('input[name="temp"]:checked').val());
+		var breathe = parseInt($('input[name="breathe"]:checked').val());
+		var pain = parseInt($('input[name="pain"]:checked').val());
+		var diarrhoea = parseInt($('input[name="diarrhoea"]:checked').val());
+		var cond = parseInt($('input[name="cond"]:checked').val());
+		var cough = parseInt($('input[name="cough"]:checked').val());
+		var sore = parseInt($('input[name="sore"]:checked').val());
+		var status = parseInt($('input[name="status"]:checked').val());
+		var age = parseInt($('input[name="age"]:checked').val());
+		
+		total = hist + temp + breathe + pain + diarrhoea + cond + cough + sore + status + age
+		console.log("total",total);
+		
+		$(".page-div").hide();
+		$("#resultDivHdr").removeClass( "w3-green w3-blue w3-red" )
+		if(total<=16)
+		{
+			$("#resultDivHdr").addClass("w3-green");
+			$("#resultDivTxt").text("You are safe, no need to worry");
+		}
+		else if(total==17 || total==18)
+		{
+			$("#resultDivHdr").addClass("w3-blue");
+			$("#resultDivTxt").text("Exercise extreme caution and stay at home and notify medical authorities if condition deteriorates");
+		}
+		else
+		{
+			$("#resultDivHdr").addClass("w3-red");
+			$("#resultDivTxt").text("Immediate medical attention is required and you may require COVID 19 testing");
+		}
+		$("#resultDiv").show();
+  });
+  
 });
 </script>
 <body>
@@ -192,9 +224,14 @@ $(document).ready(function(){
 	<label>More than 50 Yrs</label></p>
 	
 	<br/>
-	<div style="text-align:center">	<button id="enter" class="w3-button w3-blue w3-border">Submit</button>	</div><br>
-	</div></div><div>
+	<div style="text-align:center">	<button id="submit" class="w3-button w3-blue w3-border">Submit</button>	</div><br>
 
-</div>
+	</div>
+
+	<div id="resultDiv" class="w3-card-4" style="display:none">
+	<header id="resultDivHdr" class="w3-container w3-blue w3-display-middle">
+		<h1 id="resultDivTxt">Header</h1>
+	</header>
+	</div>
 </body>
 </html>
