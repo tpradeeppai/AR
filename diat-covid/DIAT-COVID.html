@@ -98,6 +98,9 @@ $(document).ready(function(){
 	  $("#containerdiv1").show();
 	  Android.showToast("print");
   });
+      $("#print").click(function(){
+		window.print();
+  });
   $("#submit").click(function(){
 		var hist = parseInt($('input[name="hist"]:checked').val());
 		var temp = parseInt($('input[name="temp"]:checked').val());
@@ -335,6 +338,7 @@ $(document).ready(function(){
 		<h1 id="resultDivTxt" class="text-replace">Header</h1>
 	</header>
 	<button id="home" class="w3-display-bottommiddle w3-button w3-blue w3-border text-replace">HOME</button>
+	<button id="print" class="w3-display-bottommiddle w3-button w3-blue w3-border text-replace">Print</button>
 	</div>
 </body>
 </html>
