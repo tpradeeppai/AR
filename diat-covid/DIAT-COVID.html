@@ -10,6 +10,8 @@ html,body {
 </style>
 <script src="jquery.min.js"></script>
 <script>
+
+
 $(document).ready(function(){
   lang = 1;
   wordMap = 
@@ -94,6 +96,7 @@ $(document).ready(function(){
       $(".page-div").hide();
 	  $("#resultDiv").hide();
 	  $("#containerdiv1").show();
+	  Android.showToast("print");
   });
   $("#submit").click(function(){
 		var hist = parseInt($('input[name="hist"]:checked').val());
