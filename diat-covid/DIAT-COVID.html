@@ -3,12 +3,14 @@
 <title>DIAT-COVID</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="print.min.css">
 <style>
 html,body {
     height:100%;
 }
 </style>
 <script src="jquery.min.js"></script>
+<script src="print.min.js"></script>
 <script>
 
 
@@ -100,7 +102,7 @@ $(document).ready(function(){
   });
   
   $("#print").click(function(){
-		window.print();
+		printJS({printable:'docs/xx_large_printjs.pdf', type:'pdf', showModal:true});
   });
   
   $("#submit").click(function(){
