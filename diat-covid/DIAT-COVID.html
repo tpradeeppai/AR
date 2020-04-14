@@ -11,6 +11,7 @@ html,body {
 </style>
 <script src="jquery.min.js"></script>
 <script src="print.min.js"></script>
+<script src="other.lang.js"></script>
 <script>
 lang = 1;
 $(document).ready(function(){
@@ -40,11 +41,15 @@ $(document).ready(function(){
   
   $("#hindi").click(function(){
 	  lang=2;
-	  $.getScript( "en-hindi.js", function( data, textStatus, jqxhr ) {
-		other_lang();
-      });	  
+	  wordMap = hindi_lang;
+	  other_lang();	  
   });
    
+  $("#kan").click(function(){
+	  lang=3;
+	  wordMap = kan_lang;
+	  other_lang();	  
+  });
    $("#home").click(function(){
 		location.reload();
   });
@@ -69,10 +74,13 @@ $(document).ready(function(){
 		console.log("total",total);
 		
 		$(".page-div").hide();
-		$("#resultDivHdr").removeClass( "w3-green w3-blue w3-red" )
-		$("#resultDivHdr").addClass("w3-green");
+		$("#resultDivHdr").removeClass( "w3-green w3-blue w3-red" );
 		var txt = "You are safe, no need to worry";
-		if(total==17 || total==18)
+		if(total<17)
+		{
+			$("#resultDivHdr").addClass("w3-green");
+		}
+		else if(total==17 || total==18)
 		{
 			$("#resultDivHdr").addClass("w3-blue");
 			txt = "Exercise extreme caution and stay at home and notify medical authorities if condition deteriorates";
@@ -86,6 +94,7 @@ $(document).ready(function(){
 		{
 			txt = wordMap[txt];
 		}
+		$("#resultDivTxt").html(txt);
 		$("#resultDiv").show();
   });
   
@@ -100,7 +109,7 @@ $(document).ready(function(){
 			<div class="w3-container"> 
 			  <h2>Self Assessment Test for COVID-19 Infection<br/>COVID-19 संक्रमण के लिए स्व मूल्यांकन परीक्षण</h2>
 			</div>	
-		<div style="text-align:center">	<button id="eng" class="w3-button w3-blue w3-border">English</button>	<button id="hindi" class="w3-button w3-blue w3-border">हिन्दी</button></div>		
+		<div style="text-align:center">	<button id="eng" class="w3-button w3-blue w3-border">English</button>	<button id="hindi" class="w3-button w3-blue w3-border">हिन्दी</button> <button id="kan" class="w3-button w3-blue w3-border">ಕನ್ನಡ</button></div>		
 		</div>
 	</div>
 </div>
