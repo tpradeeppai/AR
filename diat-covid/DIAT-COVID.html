@@ -3,15 +3,15 @@
 <title>DIAT-COVID</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="w3.css">
-<link rel="stylesheet" href="print.min.css">
 <style>
 html,body {
     height:100%;
 }
 </style>
 <script src="jquery.min.js"></script>
-<script src="print.min.js"></script>
 <script src="other.lang.js"></script>
+<script src="jspdf.min.js"></script>
+<script src="Amiko-Regular-normal.js"></script>
 <script>
 lang = 1;
 $(document).ready(function(){
@@ -37,6 +37,7 @@ $(document).ready(function(){
   
    $("#eng").click(function(){
 		lang_click();
+		$("#print").show();
    });
   
   $("#hindi").click(function(){
@@ -55,7 +56,26 @@ $(document).ready(function(){
   });
   
   $("#print").click(function(){
-		printJS({printable:'docs/xx_large_printjs.pdf', type:'pdf', showModal:false});
+		$("#details_hdr").html("Report : " + $("#resultDivTxt").html())
+		$("#person_name_txt").html("Name : " + $("#person_name").val());
+		$("#person_mob_txt").html("Mobile : " + $("#person_mob").val());
+		$("input.w3-radio:not(:checked)").siblings(".text-replace").remove();
+		$("input.w3-radio").remove();
+		
+		var doc = new jsPDF();
+		var elementHTML = $('#containerdiv2').html();
+		var specialElementHandlers = {
+			'#elementH': function (element, renderer) {
+				return true;
+			}
+		};
+		doc.fromHTML(elementHTML, 15, 15, {
+			'width': 170,
+			'elementHandlers': specialElementHandlers
+		});
+
+		// Save the PDF
+		doc.save('report.pdf');
   });
   
   $("#submit").click(function(){
@@ -113,19 +133,29 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
-  
+ 
+<div id="resultDiv" class="w3-card-4" style="display:none">
+	<header id="resultDivHdr" class="w3-container w3-blue w3-display-middle">
+		<h1 id="resultDivTxt" class="text-replace">Header</h1>
+	</header>
+	<div class="w3-display-bottommiddle"><button id="home" class="w3-button w3-blue w3-border text-replace">HOME</button>
+		<button id="print" class="w3-button w3-blue w3-border" style="display:none">Print</button>
+		<div id="elementH" style="display:none"></div>
+	</div>
+</div>
+ 
 <div id="containerdiv2" class="w3-container page-div" style="height:100%;">
 
 		<div class="w3-container w3-teal">
-			<h2  class="text-replace">Personal Details</h2>
+			<h2  class="text-replace" id="details_hdr">Personal Details</h2>
 		</div>
 		<br/>
-  <label class="w3-text-teal"><b class="text-replace">Enter your name</b></label>
-  <input class="w3-input w3-border w3-light-grey" type="text">
+  <label class="w3-text-teal"><b class="text-replace" id="person_name_txt">Enter your name</b></label>
+  <input id="person_name" class="w3-input w3-border w3-light-grey" type="text">
 
   <br/>
-  <label class="w3-text-teal"><b class="text-replace">Enter your mobile number</b></label>
- <input class="w3-input w3-border w3-light-grey" type="text">
+  <label class="w3-text-teal"><b class="text-replace" id="person_mob_txt">Enter your mobile number</b></label>
+ <input id="person_mob" class="w3-input w3-border w3-light-grey" type="text">
 
 	<br/>
 	<label class="w3-text-teal"><b class="text-replace">Do you have any International Travel History/Contact History with Confirmed COVID 19 case?</b></label>
@@ -273,12 +303,5 @@ $(document).ready(function(){
 
 	</div>
 
-	<div id="resultDiv" class="w3-card-4" style="display:none">
-	<header id="resultDivHdr" class="w3-container w3-blue w3-display-middle">
-		<h1 id="resultDivTxt" class="text-replace">Header</h1>
-	</header>
-	<div class="w3-display-bottommiddle"><button id="home" class="w3-button w3-blue w3-border text-replace">HOME</button>
-	<button id="print" class="w3-button w3-blue w3-border">Print</button></div>
-	</div>
 </body>
 </html>
