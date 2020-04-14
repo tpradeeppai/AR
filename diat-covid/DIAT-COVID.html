@@ -7,6 +7,16 @@
 html,body {
     height:100%;
 }
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align:center;
+  width:100%;
+}
 </style>
 <script src="jquery.min.js"></script>
 <script src="other.lang.js"></script>
@@ -124,7 +134,7 @@ $(document).ready(function(){
 <div id="containerdiv1" class="page-div" style="height:100%;">
 	<div style="text-align:center height:100%;">
 
-		<div class="w3-padding"> 
+		<div class="w3-padding vertical-center"> 
 		<div style="text-align:center"><img src="DIAT_logo.png"  alt="DIAT" class="w3-image" align="middle"></div>
 			<div style="text-align:center"> 
 			  <h2>Self Assessment Test for COVID-19 Infection</h2>
