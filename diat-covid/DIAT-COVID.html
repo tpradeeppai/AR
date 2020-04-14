@@ -12,97 +12,45 @@ html,body {
 <script src="jquery.min.js"></script>
 <script src="print.min.js"></script>
 <script>
-
-
+lang = 1;
 $(document).ready(function(){
-  lang = 1;
-  wordMap = 
-  {
-    "Personal Details":"व्यक्तिगत विवरण",
-	"Enter your name":"अपना नाम दर्ज करें *",
-	"Enter your mobile number":"अपना मोबाइल नंबर दर्ज करें *",
-	"Do you have any International Travel History/Contact History with Confirmed COVID 19 case?":"क्या आपके पास किसी भी अंतर्राष्ट्रीय यात्रा इतिहास / संपर्क इतिहास की पुष्टि सीओवीआईडी 19 मामले के साथ है? *",
-	"No International Travel History/Contact History":"कोई अंतर्राष्ट्रीय यात्रा इतिहास / संपर्क इतिहास नहीं",
-	"Travel History/Contact History more than 14 days":"यात्रा इतिहास / संपर्क इतिहास 14 दिन से अधिक",
-	"Travel History/Contact History less than 14 days":"यात्रा इतिहास / संपर्क इतिहास 14 दिनों से कम",
-	"Direct Contact with Confirmed COVID 19 case":"पुष्टि किए गए COVID 19 मामले के साथ सीधे संपर्क",
-	"Body temperature/fever? *":"शरीर का तापमान / बुखार? *",
-	"98.6 F to 100 F (36 C to 37.7 C)":"98.6 फ़ारेनहाइट से 100 फ़ारेनहाइट (36 सेल्सियस से 37.7 सेल्सियस)",
-	"100 F to 102 F (36 C to 37.7 C)":"100 फ़ारेनहाइट से102 फ़ारेनहाइट (36 सेल्सियस से 37.7 सेल्सियस)",
-	"102 F to 104 F (37.7 C to 40 C)":"102 फ़ारेनहाइट से 104 फ़ारेनहाइट (37.7 सेल्सियस से 40 सेल्सियस)",
-	"> than 104 F ( > than 40 C)":"104 फ़ारेनहाइट से अधिक(40 सेल्सियस से अधिक)",
-	"Do you have any breathing difficulty? *":"क्या आपको सांस लेने में कोई कठिनाई है? *",
-	"No":"नहीं",
-	"Mild":"थोड़ा",
-	"Moderate":"अधिक",
-	"Severe":"गंभीर",
-	"Do you have any pain in the body? *":"क्या आपको शरीर में कोई दर्द है? *",
-	"Are you having any fatigue/weakness? *":"क्या आपको कोई थकान / कमजोरी है? *",
-	"Do you have a sore throat? *":"क्या आपको खांसी है? *",
-	"Do you have a cough? *":"क्या आपके गले में खराश है? *",
-	"Do you have diarrhoea? *":"क्या आपको दस्त है? *",
-	"No episodes in last 24 hrs":"पिछले 24 घंटे में नहीं",
-	"1 to 3 episodes in last 24 hrs":"पिछले 24 घंटे में 1 से 3 बार",
-	"4 to 7 episodes in last 24 hrs":"पिछले 24 घंटे में 4 से 7 बार",
-	"More than 7 episodes in last 24 hrs":"पिछले 24 घंटे में 7 से अधिक बार",
-	"Do you have any other medical conditions? *":"क्या आपको कोई अन्य चिकित्सा बीमारी है? *",
-	"None":"कोई नहीं",
-	"High BP":"हाई बी.पी.",
-	"High BP + Diabetes Mellitus":"हाई बी.पी. + मधुमेह",
-	"Reduced Immunity":"प्रतिरक्षा में कमी",
-	"How is your health status in the last 48hrs? *":"पिछले 48 घंटों में आपकी स्वास्थ्य स्थिति कैसी है? *",
-	"Improved":"हालत में सुधार",
-	"No Change":"कोई परिवर्तन नहीं",
-	"Worsened":"खराब हो गई है",
-	"Worsened a lot":"बहुत खराब हो गई है",
-	"Your age? *":"आपकी उम्र? *",
-	"15 to 50 Yrs":"15 से 50 साल",
-	"5 to 15 Yrs":"5 से 15 साल",
-	"0 to 5 Yrs":"0 से 5 साल के",
-	"More than 50 Yrs":"50 साल से अधिक",
-	"Submit":"प्रस्तुत",
-	"HOME":"घर"
-  };
-  revmap = {}
-  for (var key in wordMap)
-  {
-	revmap[wordMap[key]] = key;
-  }	 
-
   $(".page-div").hide();
   $("#containerdiv1").show();
-  $("#eng").click(function(){
-	  lang=1;
+  
+  function lang_click()
+  {
       $(".page-div").hide();
 	  $("#resultDiv").hide();
 	  $("#containerdiv2").show();
-	  var objs = $(".text-replace");
-	  for(i=0;i<objs.length;i++)
-	  {
-		$(objs[i]).html(revmap[$(objs[i]).html()]);
-	  }
-  });
-  $("#hindi").click(function(){
-	  lang=2;
-      $(".page-div").hide();
-	  $("#resultDiv").hide();
-	  $("#containerdiv2").show();
-	  var objs = $(".text-replace");
-  	
+  }
+
+  function other_lang()
+  {
+  	  var objs = $(".text-replace");
 	  for(i=0;i<objs.length;i++)
 	  {
 		$(objs[i]).html(wordMap[$(objs[i]).html()]);
-	  }  	  
+	  }
+	  lang_click();
+  }
+  
+   $("#eng").click(function(){
+		lang_click();
+   });
+  
+  $("#hindi").click(function(){
+	  lang=2;
+	  $.getScript( "en-hindi.js", function( data, textStatus, jqxhr ) {
+		other_lang();
+      });	  
   });
-    $("#home").click(function(){
-      $(".page-div").hide();
-	  $("#resultDiv").hide();
-	  $("#containerdiv1").show();
-	  Android.showToast("print");
+   
+   $("#home").click(function(){
+		location.reload();
   });
   
   $("#print").click(function(){
-		printJS({printable:'docs/xx_large_printjs.pdf', type:'pdf', showModal:true});
+		printJS({printable:'docs/xx_large_printjs.pdf', type:'pdf', showModal:false});
   });
   
   $("#submit").click(function(){
@@ -122,42 +70,21 @@ $(document).ready(function(){
 		
 		$(".page-div").hide();
 		$("#resultDivHdr").removeClass( "w3-green w3-blue w3-red" )
-		if(total<=16)
-		{
-			$("#resultDivHdr").addClass("w3-green");
-			if(lang==1)
-			{
-				$("#resultDivTxt").text("You are safe, no need to worry");
-			}
-			else
-			{
-				$("#resultDivTxt").text("आप सुरक्षित हैं, चिंता करने की कोई जरूरत नहीं है।");
-			}
-			
-		}
-		else if(total==17 || total==18)
+		$("#resultDivHdr").addClass("w3-green");
+		var txt = "You are safe, no need to worry";
+		if(total==17 || total==18)
 		{
 			$("#resultDivHdr").addClass("w3-blue");
-			if(lang==1)
-			{
-				$("#resultDivTxt").text("Exercise extreme caution and stay at home and notify medical authorities if condition deteriorates");
-			}
-			else
-			{
-				$("#resultDivTxt").text("अत्यधिक सावधानी बरतें और घर पर रहें और स्थिति बिगड़ने पर चिकित्सा अधिकारियों को सूचित करें।");
-			}
+			txt = "Exercise extreme caution and stay at home and notify medical authorities if condition deteriorates";
 		}
-		else
+		else if(total > 18)
 		{
 			$("#resultDivHdr").addClass("w3-red");
-			if(lang==1)
-			{
-				$("#resultDivTxt").text("Immediate medical attention is required and you may require COVID 19 testing");
-			}
-			else
-			{
-				$("#resultDivTxt").text("तत्काल चिकित्सा ध्यान देने की आवश्यकता है और आपको COVID 19 परीक्षण की आवश्यकता हो सकती है।");
-			}
+			txt = "Immediate medical attention is required and you may require COVID 19 testing";
+		}
+		if(lang!=1)
+		{
+			txt = wordMap[txt];
 		}
 		$("#resultDiv").show();
   });
