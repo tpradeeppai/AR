@@ -41,42 +41,16 @@ $(document).ready(function(){
 	  {
 		$(objs[i]).html(wordMap[$(objs[i]).html()]);
 	  }
-	  lang_click();
   }
   
   $("#enter_lang").click(function(){
 	lang = $('#lang_option').val();
-	switch(lang)
+	if(lang != "english")
 	{
-		case "english":
-			lang_click();
-			break;
-		case "kannada":
-			  wordMap = kannada_lang;
-			  other_lang();			
-			break;
-		case "hindi":		
-			  wordMap = hindi_lang;
-			  other_lang();			
-			break;
-		case "tamil":		
-			  wordMap = tamil_lang;
-			  other_lang();			
-			break;
-		case "malayalam":
-			  wordMap = malayalam_lang;
-			  other_lang();			
-			break;
-		case "marati":		
-			  wordMap = marati_lang;
-			  other_lang();			
-			break;			
-		case "telugu":
-			  lang = "telugu";		
-			  wordMap = telugu_lang;
-			  other_lang();			
-			break;
+		wordMap = window[lang + "_lang"];
+		other_lang();
 	}
+	lang_click();
   });
 
    $("#home").click(function(){
@@ -162,6 +136,7 @@ $(document).ready(function(){
 		<select class="w3-select" id="lang_option" style="width:150px;">
 		  <option value="english" selected>English</option>
 		  <option value="hindi">हिन्दी</option>
+		  <option value="japanese">日本語</option>
 		  <option value="marati">मराठी</option>
 		  <option value="kannada">ಕನ್ನಡ</option>
 		  <option value="telugu">తెలుగు</option>
