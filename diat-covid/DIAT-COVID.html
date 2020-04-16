@@ -21,7 +21,6 @@ html,body {
 <script src="jquery.min.js"></script>
 <script src="other.lang.js"></script>
 <script src="jspdf.min.js"></script>
-<script src="Amiko-Regular-normal.js"></script>
 <script>
 lang = 1;
 $(document).ready(function(){
@@ -50,6 +49,46 @@ $(document).ready(function(){
 //		$("#print").show();
    });
   
+  $("#enter_lang").click(function(){
+	var lang = $('#lang_option').val();
+	switch(lang)
+	{
+		case "english":
+			lang = "english";
+			lang_click();
+			break;
+		case "kannada":
+			  lang = "kannada";
+			  wordMap = kannada_lang;
+			  other_lang();			
+			break;
+		case "hindi":
+			  lang = "hindi";		
+			  wordMap = hindi_lang;
+			  other_lang();			
+			break;
+		case "tamil":
+			  lang = "tamil";		
+			  wordMap = tamil_lang;
+			  other_lang();			
+			break;
+		case "malayalam":
+			  lang = "malayalam";
+			  wordMap = malayalam_lang;
+			  other_lang();			
+			break;
+		case "marati":
+			  lang = "marati";		
+			  wordMap = marati_lang;
+			  other_lang();			
+			break;			
+		case "telugu":
+			  lang = "telugu";		
+			  wordMap = telugu_lang;
+			  other_lang();			
+			break;
+	}
+  });
   $("#hindi").click(function(){
 	  lang=2;
 	  wordMap = hindi_lang;
@@ -104,7 +143,7 @@ $(document).ready(function(){
 		console.log("total",total);
 		
 		$(".page-div").hide();
-		$("#resultDivHdr").removeClass( "w3-green w3-blue w3-red" );
+		$("#resultDivHdr").removeClass( "w3-green w3-orange w3-red" );
 		var txt = "You are safe, no need to worry";
 		if(total<17)
 		{
@@ -112,7 +151,7 @@ $(document).ready(function(){
 		}
 		else if(total==17 || total==18)
 		{
-			$("#resultDivHdr").addClass("w3-blue");
+			$("#resultDivHdr").addClass("w3-orange");
 			txt = "Exercise extreme caution and stay at home and notify medical authorities if condition deteriorates";
 		}
 		else if(total > 18)
@@ -120,7 +159,7 @@ $(document).ready(function(){
 			$("#resultDivHdr").addClass("w3-red");
 			txt = "Immediate medical attention is required and you may require COVID 19 testing";
 		}
-		if(lang!=1)
+		if(lang!="english")
 		{
 			txt = wordMap[txt];
 		}
@@ -140,7 +179,18 @@ $(document).ready(function(){
 			  <h2>Self Assessment Test for COVID-19 Infection</h2>
 			  <h2>COVID-19 संक्रमण के लिए स्व मूल्यांकन परीक्षण</h2>
 			</div>	
-		<div style="text-align:center">	<button id="eng" class="w3-button w3-blue w3-border">English</button>	<button id="hindi" class="w3-button w3-blue w3-border">हिन्दी</button> <button id="kan" class="w3-button w3-blue w3-border">ಕನ್ನಡ</button></div>		
+		<div style="text-align:center">	
+		<select class="w3-select" id="lang_option" style="width:150px;">
+		  <option value="english" selected>English</option>
+		  <option value="hindi">हिन्दी</option>
+		  <option value="marati">मराठी</option>
+		  <option value="kannada">ಕನ್ನಡ</option>
+		  <option value="telugu">తెలుగు</option>
+		  <option value="tamil">தமிழ்</option>
+		  <option value="malayalam">മലയാളം</option>
+		</select>
+		<button id="enter_lang" class="w3-button w3-blue w3-border">Enter</button>
+		</div>		
 		</div>
 	</div>
 </div>
@@ -256,16 +306,16 @@ $(document).ready(function(){
 	<br/>
 	<label class="w3-text-teal"><b class="text-replace">Do you have diarrhoea? *</b></label>
 	<p><input class="w3-radio" type="radio" name="diarrhoea" value="1" checked>
-	<label class="text-replace">No episodes in last 24 hrs</label></p>
+	<label class="text-replace">No times in last 24 hrs</label></p>
 
 	<p><input class="w3-radio" type="radio" name="diarrhoea" value="2">
-	<label class="text-replace">1 to 3 episodes in last 24 hrs</label></p>
+	<label class="text-replace">1 to 3 times in last 24 hrs</label></p>
 
 	<p><input class="w3-radio" type="radio" name="diarrhoea" value="3">
-	<label class="text-replace">4 to 7 episodes in last 24 hrs</label></p>
+	<label class="text-replace">4 to 7 times in last 24 hrs</label></p>
 	
 	<p><input class="w3-radio" type="radio" name="diarrhoea" value="4">
-	<label class="text-replace">More than 7 episodes in last 24 hrs</label></p>
+	<label class="text-replace">More than 7 times in last 24 hrs</label></p>
 	
 	<br/>
 	<label class="w3-text-teal"><b class="text-replace">Do you have any other medical conditions? *</b></label>
