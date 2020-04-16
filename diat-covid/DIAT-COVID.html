@@ -22,7 +22,7 @@ html,body {
 <script src="other.lang.js"></script>
 <script src="jspdf.min.js"></script>
 <script>
-lang = 1;
+lang = "english";
 $(document).ready(function(){
   $(".page-div").hide();
   $("#containerdiv1").show();
@@ -44,41 +44,30 @@ $(document).ready(function(){
 	  lang_click();
   }
   
-   $("#eng").click(function(){
-		lang_click();
-//		$("#print").show();
-   });
-  
   $("#enter_lang").click(function(){
-	var lang = $('#lang_option').val();
+	lang = $('#lang_option').val();
 	switch(lang)
 	{
 		case "english":
-			lang = "english";
 			lang_click();
 			break;
 		case "kannada":
-			  lang = "kannada";
 			  wordMap = kannada_lang;
 			  other_lang();			
 			break;
-		case "hindi":
-			  lang = "hindi";		
+		case "hindi":		
 			  wordMap = hindi_lang;
 			  other_lang();			
 			break;
-		case "tamil":
-			  lang = "tamil";		
+		case "tamil":		
 			  wordMap = tamil_lang;
 			  other_lang();			
 			break;
 		case "malayalam":
-			  lang = "malayalam";
 			  wordMap = malayalam_lang;
 			  other_lang();			
 			break;
-		case "marati":
-			  lang = "marati";		
+		case "marati":		
 			  wordMap = marati_lang;
 			  other_lang();			
 			break;			
@@ -89,17 +78,7 @@ $(document).ready(function(){
 			break;
 	}
   });
-  $("#hindi").click(function(){
-	  lang=2;
-	  wordMap = hindi_lang;
-	  other_lang();	  
-  });
-   
-  $("#kan").click(function(){
-	  lang=3;
-	  wordMap = kan_lang;
-	  other_lang();	  
-  });
+
    $("#home").click(function(){
 		location.reload();
   });
