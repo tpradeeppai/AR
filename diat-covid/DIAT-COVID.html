@@ -85,6 +85,7 @@ $(document).ready(function(){
 		var temp = parseInt($('input[name="temp"]:checked').val());
 		var breathe = parseInt($('input[name="breathe"]:checked').val());
 		var pain = parseInt($('input[name="pain"]:checked').val());
+		var fatigue = parseInt($('input[name="fatigue"]:checked').val());
 		var diarrhoea = parseInt($('input[name="diarrhoea"]:checked').val());
 		var cond = parseInt($('input[name="cond"]:checked').val());
 		var cough = parseInt($('input[name="cough"]:checked').val());
@@ -92,7 +93,7 @@ $(document).ready(function(){
 		var status = parseInt($('input[name="status"]:checked').val());
 		var age = parseInt($('input[name="age"]:checked').val());
 		
-		total = hist + temp + breathe + pain + diarrhoea + cond + cough + sore + status + age
+		total = hist + temp + breathe + pain + fatigue + diarrhoea + cond + cough + sore + status + age
 		console.log("total",total);
 		
 		$(".page-div").hide();
@@ -184,7 +185,7 @@ $(document).ready(function(){
 	<p><input class="w3-radio" type="radio" name="hist" value="3">
 	<label class="text-replace">Travel History/Contact History less than 14 days</label></p>
 	
-	<p><input class="w3-radio" type="radio" name="hist" value="4">
+	<p><input class="w3-radio" type="radio" name="hist" value="3">
 	<label class="text-replace">Direct Contact with Confirmed COVID 19 case</label></p>
 
 
@@ -199,7 +200,7 @@ $(document).ready(function(){
 	<p><input class="w3-radio" type="radio" name="temp" value="3">
 	<label class="text-replace">102 F to 104 F (37.7 C to 40 C)</label></p>
 	
-	<p><input class="w3-radio" type="radio" name="temp" value="4">
+	<p><input class="w3-radio" type="radio" name="temp" value="3">
 	<label class="text-replace">more than 104 F (more than 40 C)</label></p>
 
 	<br/>
@@ -213,7 +214,7 @@ $(document).ready(function(){
 	<p><input class="w3-radio" type="radio" name="breathe" value="3">
 	<label class="text-replace">Moderate</label></p>
 	
-	<p><input class="w3-radio" type="radio" name="breathe" value="4">
+	<p><input class="w3-radio" type="radio" name="breathe" value="3">
 	<label class="text-replace">Severe</label></p>
 	
 	<br/>
@@ -227,7 +228,21 @@ $(document).ready(function(){
 	<p><input class="w3-radio" type="radio" name="pain" value="3">
 	<label class="text-replace">Moderate</label></p>
 	
-	<p><input class="w3-radio" type="radio" name="pain" value="4">
+	<p><input class="w3-radio" type="radio" name="pain" value="3">
+	<label class="text-replace">Severe</label></p>
+	
+	<br/>
+	<label class="w3-text-teal"><b class="text-replace">Are you having any fatigue/weakness? *</b></label>
+	<p><input class="w3-radio" type="radio" name="fatigue" value="1" checked>
+	<label class="text-replace">No</label></p>
+
+	<p><input class="w3-radio" type="radio" name="fatigue" value="2">
+	<label class="text-replace">Mild</label></p>
+
+	<p><input class="w3-radio" type="radio" name="fatigue" value="3">
+	<label class="text-replace">Moderate</label></p>
+	
+	<p><input class="w3-radio" type="radio" name="fatigue" value="3">
 	<label class="text-replace">Severe</label></p>
 	
 	<br/>
@@ -235,13 +250,13 @@ $(document).ready(function(){
 	<p><input class="w3-radio" type="radio" name="sore" value="1" checked>
 	<label class="text-replace">No</label></p>
 
-	<p><input class="w3-radio" type="radio" name="sore" value="2">
+	<p><input class="w3-radio" type="radio" name="sore" value="1">
 	<label class="text-replace">Mild</label></p>
 
-	<p><input class="w3-radio" type="radio" name="sore" value="3">
+	<p><input class="w3-radio" type="radio" name="sore" value="2">
 	<label class="text-replace">Moderate</label></p>
 	
-	<p><input class="w3-radio" type="radio" name="sore" value="4">
+	<p><input class="w3-radio" type="radio" name="sore" value="3">
 	<label class="text-replace">Severe</label></p>
 	
 	<br/>
@@ -249,13 +264,13 @@ $(document).ready(function(){
 	<p><input class="w3-radio" type="radio" name="cough" value="1" checked>
 	<label class="text-replace">No</label></p>
 
-	<p><input class="w3-radio" type="radio" name="cough" value="2">
+	<p><input class="w3-radio" type="radio" name="cough" value="1">
 	<label class="text-replace">Mild</label></p>
 
-	<p><input class="w3-radio" type="radio" name="cough" value="3">
+	<p><input class="w3-radio" type="radio" name="cough" value="2">
 	<label class="text-replace">Moderate</label></p>
 	
-	<p><input class="w3-radio" type="radio" name="cough" value="4">
+	<p><input class="w3-radio" type="radio" name="cough" value="3">
 	<label class="text-replace">Severe</label></p>
 	
 	<br/>
@@ -263,13 +278,13 @@ $(document).ready(function(){
 	<p><input class="w3-radio" type="radio" name="diarrhoea" value="1" checked>
 	<label class="text-replace">No times in last 24 hrs</label></p>
 
-	<p><input class="w3-radio" type="radio" name="diarrhoea" value="2">
+	<p><input class="w3-radio" type="radio" name="diarrhoea" value="1">
 	<label class="text-replace">1 to 3 times in last 24 hrs</label></p>
 
-	<p><input class="w3-radio" type="radio" name="diarrhoea" value="3">
+	<p><input class="w3-radio" type="radio" name="diarrhoea" value="2">
 	<label class="text-replace">4 to 7 times in last 24 hrs</label></p>
 	
-	<p><input class="w3-radio" type="radio" name="diarrhoea" value="4">
+	<p><input class="w3-radio" type="radio" name="diarrhoea" value="3">
 	<label class="text-replace">More than 7 times in last 24 hrs</label></p>
 	
 	<br/>
@@ -277,13 +292,13 @@ $(document).ready(function(){
 	<p><input class="w3-radio" type="radio" name="cond" value="1" checked>
 	<label class="text-replace">None</label></p>
 
-	<p><input class="w3-radio" type="radio" name="cond" value="2">
+	<p><input class="w3-radio" type="radio" name="cond" value="1">
 	<label class="text-replace">High BP</label></p>
 
-	<p><input class="w3-radio" type="radio" name="cond" value="3">
+	<p><input class="w3-radio" type="radio" name="cond" value="2">
 	<label class="text-replace">High BP + Diabetes Mellitus</label></p>
 	
-	<p><input class="w3-radio" type="radio" name="cond" value="4">
+	<p><input class="w3-radio" type="radio" name="cond" value="3">
 	<label class="text-replace">Reduced Immunity</label></p>
 	
 	<br/>
@@ -291,13 +306,13 @@ $(document).ready(function(){
 	<p><input class="w3-radio" type="radio" name="status" value="1" checked>
 	<label class="text-replace">Improved</label></p>
 
-	<p><input class="w3-radio" type="radio" name="status" value="2">
+	<p><input class="w3-radio" type="radio" name="status" value="1">
 	<label class="text-replace">No Change</label></p>
 
-	<p><input class="w3-radio" type="radio" name="status" value="3">
+	<p><input class="w3-radio" type="radio" name="status" value="2">
 	<label class="text-replace">Worsened</label></p>
 	
-	<p><input class="w3-radio" type="radio" name="status" value="4">
+	<p><input class="w3-radio" type="radio" name="status" value="3">
 	<label class="text-replace">Worsened a lot</label></p>
 	
 	<br/>
@@ -305,13 +320,13 @@ $(document).ready(function(){
 	<p><input class="w3-radio" type="radio" name="age" value="1" checked>
 	<label class="text-replace">15 to 50 Yrs</label></p>
 
-	<p><input class="w3-radio" type="radio" name="age" value="2">
+	<p><input class="w3-radio" type="radio" name="age" value="1">
 	<label class="text-replace">5 to 15 Yrs</label></p>
 
-	<p><input class="w3-radio" type="radio" name="age" value="3">
+	<p><input class="w3-radio" type="radio" name="age" value="2">
 	<label class="text-replace">0 to 5 Yrs</label></p>
 	
-	<p><input class="w3-radio" type="radio" name="age" value="4">
+	<p><input class="w3-radio" type="radio" name="age" value="2">
 	<label class="text-replace">More than 50 Yrs</label></p>
 	
 	<br/>
