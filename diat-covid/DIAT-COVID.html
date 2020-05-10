@@ -23,7 +23,6 @@ html,body {
 </style>
 <script src="jquery.min.js"></script>
 <script src="other.lang.js"></script>
-<script src="jspdf.min.js"></script>
 <script>
 lang = "english";
 $(document).ready(function(){
@@ -58,29 +57,6 @@ $(document).ready(function(){
 
    $("#home").click(function(){
 		location.reload();
-  });
-  
-  $("#print").click(function(){
-		$("#details_hdr").html("Report : " + $("#resultDivTxt").html())
-		$("#person_name_txt").html("Name : " + $("#person_name").val());
-		$("#person_mob_txt").html("Mobile : " + $("#person_mob").val());
-		$("input.w3-radio:not(:checked)").siblings(".text-replace").remove();
-		$("input.w3-radio").remove();
-		
-		var doc = new jsPDF();
-		var elementHTML = $('#containerdiv2').html();
-		var specialElementHandlers = {
-			'#elementH': function (element, renderer) {
-				return true;
-			}
-		};
-		doc.fromHTML(elementHTML, 15, 15, {
-			'width': 170,
-			'elementHandlers': specialElementHandlers
-		});
-
-		// Save the PDF
-		doc.save('report.pdf');
   });
   
   $("#submit").click(function(){
@@ -157,9 +133,8 @@ $(document).ready(function(){
 	<header id="resultDivHdr" class="w3-padding vertical-center">
 		<h1 id="resultDivTxt" class="text-replace">Header</h1>
 	</header>
-	<div class="w3-display-bottommiddle" style="margin-bottom:20px;"><button id="home" class="w3-button w3-blue w3-border text-replace">HOME</button>
-		<button id="print" class="w3-button w3-blue w3-border" style="display:none">Print</button>
-		<div id="elementH" style="display:none"></div>
+	<div class="w3-display-bottommiddle" style="margin-bottom:20px;">
+		<button id="home" class="w3-button w3-blue w3-border text-replace">HOME</button>
 	</div>
 </div>
  
